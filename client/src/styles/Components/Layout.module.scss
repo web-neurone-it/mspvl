@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 17000px) {
+@media (max-width: 1700px) {
   .Layout{
     width: calc(280px + (1650  - 280) * ((100vw - 320px) / (1700 - 320)));
   }

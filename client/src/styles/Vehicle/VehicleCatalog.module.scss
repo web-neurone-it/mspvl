@@ -14,9 +14,16 @@
     &-image{
       min-width: 150px;
       height: 150px;
-      background-size: cover;
+      background-size: 215px 150px;
       background-position: 50% 50%;
+      background-repeat: no-repeat;
       border-radius: 12px;
+      @media (max-width: 630px) {
+        background-size: 150px 140px;
+      }
+      @media (max-width: 450px) {
+        background-size: 110px 90px;
+      }
     }
     &-info{
       display: flex;

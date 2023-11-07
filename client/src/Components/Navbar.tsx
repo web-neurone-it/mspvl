@@ -83,9 +83,9 @@ const Navbar = () => {
 					className={classes['NavBar__phone']}
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
-					onClick={() => window.open('tel:+79020500477', '_self')}
+					onClick={() => window.open('tel:+79940048547', '_self')}
 				>
-					+7 (902) 050-04-77
+					+7 (994) 004-85-47
 				</motion.div>
 			</div>
 		</Layout>

@@ -1,9 +1,11 @@
 .PriceSidebar {
 	margin-top: 40px;
-	width: var(--sidebar-width);
+	overflow: hidden;
+	// overflow-y: auto;
+	// width: var(--sidebar-width);
 	background-color: rgba(116, 85, 255, 0.53);
 	color: white;
-	min-height: 100px;
+	// max-height: 200px;
 	height: 100%;
 	border-radius: 5px;
 	font-size: 20px;
@@ -14,6 +16,17 @@
 	@media screen and (max-width: 550px) {
 		margin-top: 0;
 	}
+
+	@media screen and (max-width: 850px) {
+		margin-top: 0;
+		overflow-y: hidden;
+		cursor: pointer;
+		// max-height: 174px;
+		
+	}
+	@media screen and (max-width: 419px) {
+		// max-height: 188px;
+	}
 }
 
 .item {
@@ -22,4 +35,8 @@
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
+	@media screen and (max-width: 850px) {
+		padding: 0 20px;
+		border-top: 1px solid rgb(54, 61, 74);
+	}
 }
