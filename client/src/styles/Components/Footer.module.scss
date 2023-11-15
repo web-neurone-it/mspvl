@@ -5,6 +5,7 @@
   margin-top: 50px;
   border-radius: 12px 12px 0 0;
   padding-top: 10px;
+  padding-bottom: 1px;
   color: $dark-blue;
 }
 .Footer{
@@ -17,10 +18,16 @@
     align-items: center;
     padding-bottom: 8px;
     img{
+      border: 2px solid $dark-blue;
+      border-radius: 10px;
       width: 150px;
       height: 150px;
     }
+    
   }
+  &-span {
+      width: 119px;
+    }
   &__column{
     &-title{
       font-size: 24px;
@@ -33,7 +40,7 @@
       align-items: center;
       font-size: 18px;
       margin-bottom: 10px;
-      max-width: 300px;
+      max-width: 310px;
       cursor: pointer;
       font-weight: 400;
       transition: all 100ms linear;

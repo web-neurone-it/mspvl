@@ -4,13 +4,7 @@ import Layout from "./Layout";
 import useWindowSize from "../hooks/useWindowSize";
 import MobileNavBar from "./MobileNavBar";
 
-interface IDataset {
-    icon: React.ReactNode
-    title: string,
-    text: string,
-}
-
-const PageIntro = ({title, video, dataset, image}: {title: string, image: string, video: string, dataset: IDataset[]} ) => {
+const PageIntro = ({title, video, image}: {title: string, image: string, video: string} ) => {
     const {width} = useWindowSize()
 
     return (
@@ -26,20 +20,9 @@ const PageIntro = ({title, video, dataset, image}: {title: string, image: string
                 }
 
                 <Layout>
-                    <p>{title}</p>
+                    <p style={{ position: 'relative', zIndex: 999}}>{title}</p>
                 </Layout>
             </div>
-            <Layout>
-                <div className={classes['PageIntro__advantages']}>
-                    {dataset.map((i, index) =>
-                        <div className={classes['PageIntro__advantages-item']} key={index}>
-                            <div className={classes['PageIntro__advantages-item-icon']}>{i.icon}</div>
-                            <div className={classes['PageIntro__advantages-item-title']}>{i.title}</div>
-                            <div className={classes['PageIntro__advantages-item-text']}>{i.text}</div>
-                        </div>
-                    )}
-                </div>
-            </Layout>
         </>
     );
 };

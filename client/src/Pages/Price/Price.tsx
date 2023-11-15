@@ -10,16 +10,18 @@ import { AiFillSignal } from 'react-icons/ai';
 import image from '../../assets/modules/m2m.png';
 import sample from '../../assets/videos/1.mp4';
 import PriceList from './PriceList';
+import Advantages from '../../Components/Advantages';
 
 const Price = () => {
 	useDocumentTitle('МСП - Прайс-лист');
 	return (
 		<Background>
 			<Navbar />
-			<PageIntro
-				video={sample}
-				title={'Прайс-лист'}
-				image={image}
+			<PageIntro video={sample} title={'Прайс-лист'} image={image} />
+			<Layout>
+				<PriceList />
+			</Layout>
+			<Advantages
 				dataset={[
 					{
 						title: 'Богатый опыт в тяжелых и масштабных проектах',
@@ -38,9 +40,6 @@ const Price = () => {
 					},
 				]}
 			/>
-			<Layout>
-				<PriceList />
-			</Layout>
 			<Footer />
 		</Background>
 	);

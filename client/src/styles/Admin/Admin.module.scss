@@ -4,15 +4,20 @@
   min-height: 70vh;
   &__item{
     &-title{
+      margin-top: 10px;
       font-size: 36px;
+      padding: 20px 0;
     }
     &-categories{
+      border: 1px solid white;
+      margin-bottom: 20px;
       max-height: 300px;
       overflow-y: scroll;
       &-item, &-item-active{
         display: flex;
         align-items: center;
         gap: 5px;
+        padding: 10px;
         cursor: pointer;
         &-image{
           min-width: 50px;
@@ -32,7 +37,7 @@
       &-form{
         display: flex;
         gap: 20px;
-        padding: 20px 0;
+        // padding: 20px 0;
         .file{
           padding: 10px;
           border-radius: 12px;

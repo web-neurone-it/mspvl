@@ -10,6 +10,7 @@ import {createReview, deleteReview, fetchReviews} from "../../store/ActionCreato
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {useDocumentTitle} from "../../hooks/useDocumentTitle";
 import MobileNavBar from "../../Components/MobileNavBar";
+import Review from './Review';
 
 const Reviews = () => {
     const {reviews, user} = useAppSelector(state => state.userReducer)
@@ -23,52 +24,62 @@ const Reviews = () => {
         }
     }
 
+    // const handleDeleteReview = () => {
+    //      dispatch(deleteReview(i.id)).then(() => dispatch(fetchReviews()));
+    // }
+
     useEffect(() => {
         dispatch(fetchReviews())
-    }, [])
+    }, [dispatch])
     useDocumentTitle('МСП - Отзывы')
     return (
-        <Background>
-            <Navbar/>
-            <MobileNavBar title={''}/>
-            <Layout>
-                <div className={classes['Reviews']}>
-                    <div className={classes['Reviews__title']}>
-                        Отзывы о нашей компании
-                    </div>
-                    <div className={classes['Reviews__setter']}>
-                        <div className={classes['Reviews__setter-title']}>
-                            Оставить отзыв
-                        </div>
-                        <div className={classes['Reviews__setter-form']}>
-                            <div className={'UIInput'}>
-                                <TextareaAutosize required value={review} onChange={e => setReview(e.currentTarget.value)}/>
-                                <div className={'UIInput-placeholder'}>Комментарий</div>
-                            </div>
-                            <UIButton type={"outline"} onClick={() => reviewHandler()}>
-                                Отправить
-                            </UIButton>
-                        </div>
-
-                    </div>
-                    <div className={classes['Reviews__items']}>
-                        {reviews.map(i =>
-                            <div className={classes['Reviews__items-item']} key={i.id}>
-                                {i.message}
-                                {user === 'Admin' &&
-                                <UIButton type={'text'} onClick={() => {
-                                    dispatch(deleteReview(i.id)).then(() => dispatch(fetchReviews()))
-                                }}>Удалить</UIButton>
-                                }
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </Layout>
-            <Footer/>
-        </Background>
-
-    );
+		<Background>
+			<Navbar />
+			<MobileNavBar title={''} />
+			<Layout>
+				<div className={classes['Reviews']}>
+					<div className={classes['Reviews__title']}>Отзывы о нашей компании</div>
+					<div className={classes['Reviews__setter']}>
+						<div className={classes['Reviews__setter-title']}>Оставить отзыв</div>
+						<div className={classes['Reviews__setter-form']}>
+							<div className={'UIInput'}>
+								<TextareaAutosize
+									required
+									value={review}
+									onChange={(e) => setReview(e.currentTarget.value)}
+								/>
+								<div className={'UIInput-placeholder'}>Комментарий</div>
+							</div>
+							<UIButton type={'outline'} onClick={() => reviewHandler()}>
+								Отправить
+							</UIButton>
+						</div>
+					</div>
+					<div className={classes['Reviews__items']}>
+						{reviews.map(
+							(i) => (
+								<Review
+									key={i.id}
+									isAdmin={user === 'Admin'}
+									review={i.message}
+									onDeleteReview={() => dispatch(deleteReview(i.id)).then(() => dispatch(fetchReviews()))}
+								/>
+							)
+							// <div className={classes['Reviews__items-item']} key={i.id}>
+							//     {i.message}
+							//     {user === 'Admin' &&
+							//     <UIButton type={'text'} onClick={() => {
+							//         dispatch(deleteReview(i.id)).then(() => dispatch(fetchReviews()))
+							//     }}>Удалить</UIButton>
+							//     }
+							// </div>
+						)}
+					</div>
+				</div>
+			</Layout>
+			<Footer />
+		</Background>
+	);
 };
 
 export default Reviews;

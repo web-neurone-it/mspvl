@@ -9,7 +9,7 @@ interface PriceState {
 	pages: number;
 	limit: number;
 	catalogCategories: ICatalogCategory[];
-	catalogProducts: ICatalogProduct[];
+	catalogProducts: ICatalogProduct[];    // ?? //
 	currentCatalogCategory: ICatalogCategory;
 }
 
@@ -44,7 +44,27 @@ export const priceSlice = createSlice({
 		fetchingCatalogCategories(state) {
 			state.loading = true;
 		},
+		updateCatalogCategory(state, action: PayloadAction<ICatalogCategory>) {
+			const { id, name, img } = action.payload;
+			const category = state.catalogCategories.find((category) => category.id === id);
+			if (category) {
+				category.name = name;
+				category.img = img;
+			}
+		},
+		updateCatalogProduct(state, action: PayloadAction<ICatalogProduct>) {
+			const { id, name} = action.payload;
+			const vehicle = state.catalogProducts.find((vehicle) => vehicle.id === id);
+			if (vehicle) {
+				vehicle.name = name;
+			}
+		},
 		fetchingCatalogCategoriesSuccess(state, action: PayloadAction<IPriceListPayload>) {
+			state.loading = false;
+			state.catalogCategories = action.payload.categories;
+			state.catalogProducts = action.payload.items;
+		},
+		fetchingCatalogProductsSuccess(state, action: PayloadAction<IPriceListPayload>) {
 			state.loading = false;
 			state.catalogCategories = action.payload.categories;
 			state.catalogProducts = action.payload.items;
